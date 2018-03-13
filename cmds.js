@@ -172,7 +172,7 @@ exports.playCmd=rl=>{
         .then(()=>playOne())
     const playOne =()=>{
         if (toBeResolved.length === 0) {
-            log ("fin")
+            log (`fin`);
             log(`No hay mas preguntas, tu puntuacion es de ${colorize(score, "green")}`);
         } else {
             const min = 0;
@@ -191,7 +191,7 @@ exports.playCmd=rl=>{
 
                     } else {
                         log("incorrect");
-                        log ("fin");
+                        log (`fin`);
                         log(`Has ${colorize('fallado', 'red')},tu puntuación es de ${colorize(score, "red")}`);
                         rl.prompt();
                     }
