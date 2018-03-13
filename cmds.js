@@ -133,11 +133,13 @@ exports.testCmd=(rl,id)=>{
          return makeQuestion(rl,quiz.question)
              .then (a => {
                  if (a.toLowerCase().trim() === quiz.answer.toLowerCase().trim()) {
-                     log(`La respuesta es ${colorize('correcta', 'green')}`);
+                     log('Su respuesta es correcta.');
+                     biglog('Correcta', 'green');
                      rl.prompt();
                  } else {
-                     log("incorrect");
-                     log (`Has ${colorize('fallado','red')}`);rl.prompt();}
+                     log('Su respuesta es incorrecta.');
+                     biglog('Incorrecta', 'red');
+                     rl.prompt();}
              })
      })
      .catch(Sequelize.ValidationError, error =>{errlog('El quiz es erroneo:'); error.errors.forEach(({message})=> errlog(message));})
@@ -172,8 +174,9 @@ exports.playCmd=rl=>{
         .then(()=>playOne())
     const playOne =()=>{
         if (toBeResolved.length === 0) {
-            log (`fin`);
-            log(`No hay mas preguntas, tu puntuacion es de ${colorize(score, "green")}`);
+            log('No hay nada más que preguntar.');
+            log('Fin del juego. Aciertos:');
+            biglog(score, 'magenta');
         } else {
             const min = 0;
             const max = toBeResolved.length;
@@ -182,17 +185,17 @@ exports.playCmd=rl=>{
             return makeQuestion(rl, quiz.question)
                 .then(a => {
                     if (a.toLowerCase().trim() === quiz.answer.toLowerCase().trim()) {
-                       log(" correct");
-                       log(`La respuesta es ${colorize('correcta', 'green')}`);
-
                         score++;
+                        log(`CORRECTO - Lleva ${score} aciertos.`);
+
+
                         toBeResolved.splice(id_l, 1);
                         playOne();
 
                     } else {
-                        log("incorrect");
-                        log (`fin`);
-                        log(`Has ${colorize('fallado', 'red')},tu puntuación es de ${colorize(score, "red")}`);
+                        log(`INCORRECTO - Lleva ${score} aciertos.`);
+                        log('Fin del juego. Aciertos:');
+                        biglog(score, 'magenta');
                         rl.prompt();
                     }
                 })
