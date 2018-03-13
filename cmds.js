@@ -136,7 +136,8 @@ exports.testCmd=(rl,id)=>{
                      log(`La respuesta es ${colorize('correcta', 'green')}`);
                      rl.prompt();
                  } else {
-                     log (`Tu respuesta es incorrecta`);rl.prompt();}
+                     log("incorrect");
+                     log (`Has ${colorize('fallado','red')}`);rl.prompt();}
              })
      })
      .catch(Sequelize.ValidationError, error =>{errlog('El quiz es erroneo:'); error.errors.forEach(({message})=> errlog(message));})
@@ -171,8 +172,8 @@ exports.playCmd=rl=>{
         .then(()=>playOne())
     const playOne =()=>{
         if (toBeResolved.length === 0) {
-            log ("fin");
-            log(`fin, No hay mas preguntas, tu puntuacion es de ${colorize(score, "green")}`);
+            log ("fin")
+            log(`No hay mas preguntas, tu puntuacion es de ${colorize(score, "green")}`);
         } else {
             const min = 0;
             const max = toBeResolved.length;
@@ -189,10 +190,9 @@ exports.playCmd=rl=>{
                         playOne();
 
                     } else {
+                        log("incorrect");
                         log ("fin");
-                        log("Incorrecta");
-                        log(`Respuesta incorrecta, fin`);
-                        log(`tu puntuación es de ${colorize(score, "red")}`);
+                        log(`Has ${colorize('fallado', 'red')},tu puntuación es de ${colorize(score, "red")}`);
                         rl.prompt();
                     }
                 })
