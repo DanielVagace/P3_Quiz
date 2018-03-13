@@ -136,7 +136,6 @@ exports.testCmd=(rl,id)=>{
                      log(`La respuesta es ${colorize('correcta', 'green')}`);
                      rl.prompt();
                  } else {
-                     log("incorrect");
                      log (`Tu respuesta es incorrecta`);rl.prompt();}
              })
      })
@@ -173,7 +172,7 @@ exports.playCmd=rl=>{
     const playOne =()=>{
         if (toBeResolved.length === 0) {
             log ("fin");
-            log(`No hay mas preguntas, tu puntuacion es de ${colorize(score, "green")}`);
+            log(`fin, No hay mas preguntas, tu puntuacion es de ${colorize(score, "green")}`);
         } else {
             const min = 0;
             const max = toBeResolved.length;
@@ -191,8 +190,9 @@ exports.playCmd=rl=>{
 
                     } else {
                         log ("fin");
-                        log(`Respuesta incorrecta`);
-                        log(`tu puntuación es de ${colorize(score, "red")}`)
+                        log("Incorrecta");
+                        log(`Respuesta incorrecta, fin`);
+                        log(`tu puntuación es de ${colorize(score, "red")}`);
                         rl.prompt();
                     }
                 })
