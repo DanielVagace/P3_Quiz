@@ -137,7 +137,7 @@ exports.testCmd=(rl,id)=>{
                      biglog('Correcta', 'green');
                      rl.prompt();
                  } else {
-                     log(`Su respuesta es incorrecta.`);
+                     log('Su respuesta es incorrecta.');
                      biglog('Incorrecta', 'red');
                      rl.prompt();}
              })
@@ -175,7 +175,8 @@ exports.playCmd=rl=>{
     const playOne =()=>{
         if (toBeResolved.length === 0) {
             log('No hay nada más que preguntar.');
-            log(`Fin del juego. Aciertos: ${score}`);
+            log('Fin del juego.');
+            log(` Aciertos: ${score}`)
         } else {
             const min = 0;
             const max = toBeResolved.length;
@@ -192,8 +193,9 @@ exports.playCmd=rl=>{
                         playOne();
 
                     } else {
-                        log(`INCORRECTO `);
-                        log(`Fin del juego. Aciertos: ${score}`);
+                        log('INCORRECTO');
+                        log('Fin del juego.');
+                        log(` Aciertos: ${score}`)
                         rl.prompt();
                     }
                 })
