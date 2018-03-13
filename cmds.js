@@ -137,7 +137,7 @@ exports.testCmd=(rl,id)=>{
                      rl.prompt();
                  } else {
                      log("incorrect");
-                     log (`Has ${colorize('fallado','red')}`);rl.prompt();}
+                     log (`Tu respuesta es incorrecta`);rl.prompt();}
              })
      })
      .catch(Sequelize.ValidationError, error =>{errlog('El quiz es erroneo:'); error.errors.forEach(({message})=> errlog(message));})
@@ -190,9 +190,9 @@ exports.playCmd=rl=>{
                         playOne();
 
                     } else {
-                        log("incorrect");
                         log ("fin");
-                        log(`Has ${colorize('fallado', 'red')},tu puntuación es de ${colorize(score, "red")}`);
+                        log(`Respuesta incorrecta`);
+                        log(`tu puntuación es de ${colorize(score, "red")}`)
                         rl.prompt();
                     }
                 })
