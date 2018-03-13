@@ -136,8 +136,7 @@ exports.testCmd=(rl,id)=>{
                      log(`La respuesta es ${colorize('correcta', 'green')}`);
                      rl.prompt();
                  } else {
-                     log("incorrect");
-                     log (`Tu respuesta es incorrecta`);rl.prompt();}
+                     log(`Respuesta incorrecta`);rl.prompt();}
              })
      })
      .catch(Sequelize.ValidationError, error =>{errlog('El quiz es erroneo:'); error.errors.forEach(({message})=> errlog(message));})
