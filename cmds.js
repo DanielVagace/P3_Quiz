@@ -179,15 +179,15 @@ exports.playCmd=rl=>{
             return makeQuestion(rl, quiz.question)
                 .then(a => {
                     if (a.toLowerCase().trim() === quiz.answer.toLowerCase().trim()) {
-                        console.log(" correct");
-                        log(`La respuesta es ${colorize('correcta', 'green')}`);
+                       log(" correct");
+                       log(`La respuesta es ${colorize('correcta', 'green')}`);
 
                         score++;
                         toBeResolved.splice(id_l, 1);
                         playOne();
 
                     } else {
-                        console.log("Incorrect")
+                        log("Incorrect")
                         log(`Has ${colorize('fallado', 'red')},tu puntuación es de ${colorize(score, "red")}`);
                         rl.prompt();
                     }
