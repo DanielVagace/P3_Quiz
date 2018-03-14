@@ -176,7 +176,7 @@ exports.playCmd=rl=>{
         if (toBeResolved.length === 0) {
             log('No hay nada más que preguntar.');
             log('Fin del juego.');
-            log(` Aciertos: ${score}`)
+            log(` Numero de Aciertos: ${score}`)
         } else {
             const min = 0;
             const max = toBeResolved.length;
@@ -195,7 +195,7 @@ exports.playCmd=rl=>{
                     } else {
                         log('INCORRECTO');
                         log('Fin del juego.');
-                        log(` Aciertos: ${score}`)
+                        log(` Numero de Aciertos: ${score}`)
                         rl.prompt();
                     }
                 })
